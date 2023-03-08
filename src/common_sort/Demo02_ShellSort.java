@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * 希尔排序
  */
-public class No02_ShellSort {
+public class Demo02_ShellSort {
     public int[] shellSort(int[] arr) {
         if (arr == null || arr.length <= 1) {
             return arr;
@@ -35,9 +35,35 @@ public class No02_ShellSort {
     }
 
 
+    public int[] sortArray(int[] nums) {
+        if (nums == null || nums.length <= 1) {
+            return nums;
+        }
+        int step = nums.length / 2;
+        while (step >= 1) {
+            System.out.println(step);
+            for (int i = step; i < nums.length; i++) {
+                int temp = nums[i];
+                for (int j = i; j >= 0; j -= step) {
+                    if (j >= step && temp < nums[j - step]) {
+                        nums[j] = nums[j - step];
+                    } else {
+                        nums[j] = temp;
+                        break;
+                    }
+                }
+
+            }
+            step = step / 2;
+
+
+        }
+        return nums;
+    }
+
     public static void main(String[] args) {
-        No02_ShellSort no02_shellSort = new No02_ShellSort();
-        int[] ints = no02_shellSort.shellSort(new int[]{49, 38, 65, 97, 76, 13, 27, 49, 55, 4});
+        Demo02_ShellSort no02_shellSort = new Demo02_ShellSort();
+        int[] ints = no02_shellSort.sortArray(new int[]{10, 9, 8, 7, 6, 5, 4, 3, 2, 1});
         System.out.println(Arrays.toString(ints));
 
     }
